@@ -28,50 +28,51 @@
     }
     h1 {
       text-align: center;
-      font-size: 1.7rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #FFE6B0, #FFB347);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: #FFB347;
       margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
     }
-    h1 svg { width: 30px; height: 30px; flex-shrink: 0; }
+    h1 svg { width: 32px; height: 32px; flex-shrink: 0; stroke: #FFB347; }
     .sub {
       text-align: center;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: #8db3c2;
       margin-bottom: 1.8rem;
       border-bottom: 1px dashed rgba(255, 180, 80, 0.3);
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
-      padding-bottom: 6px;
+      padding-bottom: 8px;
+      width: 100%;
     }
-    .sub svg { width: 14px; height: 14px; }
+    .sub svg { width: 12px; height: 12px; stroke: #8db3c2; }
+    
     .input-group { margin-bottom: 1.2rem; }
     label {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.7rem;
+      gap: 8px;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #cbe6f0;
-      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      margin-bottom: 8px;
       margin-left: 6px;
     }
-    label svg { width: 14px; height: 14px; flex-shrink: 0; opacity: .9; }
+    label svg { width: 16px; height: 16px; stroke: #ffffff; flex-shrink: 0; }
+    
     input {
       width: 100%;
-      padding: 14px 18px;
-      background: rgba(0, 0, 0, 0.45);
-      border: 1.5px solid #2f5b6e;
+      padding: 16px 18px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid #2f5b6e;
       border-radius: 2rem;
       font-size: 1rem;
       color: #ffffff;
@@ -81,13 +82,14 @@
     }
     input:focus {
       border-color: #ffaa44;
-      background: #0c2029;
-      box-shadow: 0 0 0 3px rgba(255, 170, 68, 0.25);
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 0 3px rgba(255, 170, 68, 0.15);
     }
-    input::placeholder { color: #87a9b8; font-size: 0.85rem; }
+    input::placeholder { color: #6a8b9a; font-size: 0.95rem; }
+    
     button {
       width: 100%;
-      padding: 14px;
+      padding: 16px;
       font-weight: 700;
       font-size: 1rem;
       border: none;
@@ -99,8 +101,11 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    button svg { width: 18px; height: 18px; flex-shrink: 0; }
+    button svg { width: 20px; height: 20px; flex-shrink: 0; }
+    
     .gerar {
       background: linear-gradient(95deg, #ff9933, #ff7700);
       color: white;
@@ -108,17 +113,17 @@
     }
     .gerar:hover {
       transform: translateY(-2px);
-      background: linear-gradient(95deg, #ffaa44, #ff8811);
       box-shadow: 0 12px 20px -8px rgba(255, 100, 0, 0.5);
     }
     .limpar {
       background: rgba(30, 60, 70, 0.8);
-      backdrop-filter: blur(4px);
-      border: 1px solid #ffaa6655;
+      border: 1px solid #2f5b6e;
       color: #f0f9ff;
+      margin-top: 12px;
     }
-    .limpar:hover { background: #2f5566; border-color: #ffbb77; transform: translateY(-1px); }
+    .limpar:hover { background: rgba(40, 80, 90, 0.9); border-color: #4a8a9e; }
     button:active { transform: scale(0.97); }
+    
     .loading {
       text-align: center;
       margin-top: 1.5rem;
@@ -142,6 +147,7 @@
       animation: spin 0.8s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+    
     .resultado {
       margin-top: 1.4rem;
       padding: 1.3rem;
@@ -152,17 +158,9 @@
       line-height: 1.6;
       transition: all 0.2s;
       word-break: break-word;
+      min-height: 50px;
     }
     .resultado b { color: #ffcd94; font-size: 1rem; }
-    .resultado .linha-jogo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-      font-weight: 600;
-      color: #ffcd94;
-    }
-    .resultado .linha-jogo svg { width: 16px; height: 16px; flex-shrink: 0; }
     #analiseDias {
       margin-top: 1.2rem;
       padding: 1rem;
@@ -172,30 +170,29 @@
       line-height: 1.6;
       color: #d5eef5;
       border: 1px solid rgba(255, 170, 68, 0.2);
+      min-height: 40px;
     }
     #analiseDias b { color: #ffbc6e; }
     .astro-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
       background: rgba(255, 170, 68, 0.15);
       border: 1px solid #ffaa44;
       border-radius: 20px;
-      padding: 3px 12px;
+      padding: 2px 10px;
       font-size: 0.75rem;
       color: #ffcd94;
-      margin: 4px 0;
+      margin: 2px 0;
     }
-    .astro-tag svg { width: 12px; height: 12px; }
     .disclaimer {
       font-size: 0.65rem;
       color: #6a8b9a;
       text-align: center;
       margin-top: 1rem;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .fade-in { animation: fadeIn 0.5s ease; }
+    
     .toast-message {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) scale(0.9);
       background: #1e2f38; backdrop-filter: blur(12px);
@@ -206,11 +203,11 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.3);
       display: flex; align-items: center; gap: 8px;
     }
-    .toast-message svg { width: 14px; height: 14px; flex-shrink: 0; }
     .toast-message.show { opacity: 1; transform: translateX(-50%) scale(1); }
+    
     @media (max-width: 500px) {
       .container { padding: 1.3rem; }
-      h1 { font-size: 1.4rem; }
+      h1 { font-size: 1.3rem; }
       .resultado { font-size: 0.8rem; }
     }
   </style>
@@ -219,84 +216,69 @@
 
 <div class="container">
   <h1>
-    <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradGold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <defs><linearGradient id="gradGold" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#FFE6B0"/><stop offset="100%" stop-color="#FFB347"/>
-      </linearGradient></defs>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="9"/>
-      <path d="M12 3v18M3 12h18"/>
-      <circle cx="12" cy="12" r="3" fill="url(#gradGold)" stroke="none" opacity=".35"/>
+      <line x1="12" y1="3" x2="12" y2="21"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
     </svg>
     Gerador da Sorte PRO
   </h1>
   <div style="text-align: center;">
     <span class="sub">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#8db3c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg>
       Cabala & Astrologia
-      <svg viewBox="0 0 24 24" fill="none" stroke="#8db3c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg>
     </span>
   </div>
 
   <div class="input-group">
     <label>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       NOME COMPLETO
     </label>
     <input type="text" id="nome" placeholder="Ex: Ana Clara Souza" autocomplete="off">
   </div>
+  
   <div class="input-group">
     <label>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       DATA DE NASCIMENTO
     </label>
     <input type="text" id="dataNascimento" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10">
   </div>
+  
   <div class="input-group">
     <label>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       DATA DE HOJE (REFERÊNCIA)
     </label>
     <input type="text" id="dataHoje" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10">
   </div>
 
   <button class="gerar" id="btnGerar">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg>
     GERAR MINHA SORTE
   </button>
+  
   <button class="limpar" id="btnLimpar">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
     LIMPAR CAMPOS
   </button>
 
   <div id="loading" class="loading" style="display: none;">
     <div class="spinner"></div>
-    <span>Consultando os astros e a Cabala...</span>
+    <span>Consultando os astros...</span>
   </div>
 
   <div class="resultado" id="resultado"></div>
   <div id="analiseDias"></div>
+  
   <div class="disclaimer">⚠️ Este aplicativo usa correspondências simbólicas da Cabala e Astrologia para fins de entretenimento e inspiração. Nenhum método esotérico prevê resultados de loterias, que são eventos aleatórios.</div>
 </div>
 
 <div id="toastMsg" class="toast-message">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-  </svg>
-  Preencha todos os campos
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  <span id="toastText">Preencha todos os campos</span>
 </div>
 
 <script>
@@ -336,14 +318,7 @@
       { name: "Sagitário", start: [11, 22], end: [12, 21], element: "Fogo", ruler: "Júpiter", rulerNum: 3 }
     ];
 
-    // --- ÍCONES SVG ---
-    const ICONS = {
-      mega: '<svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>',
-      facil: '<svg viewBox="0 0 24 24" fill="none" stroke="#9b59b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="#9b59b6"/><circle cx="15.5" cy="8.5" r="1.5" fill="#9b59b6"/><circle cx="8.5" cy="15.5" r="1.5" fill="#9b59b6"/><circle cx="15.5" cy="15.5" r="1.5" fill="#9b59b6"/></svg>',
-      loto: '<svg viewBox="0 0 24 24" fill="none" stroke="#e67e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>'
-    };
-
-    // --- FUNÇÕES AUXILIARES ---
+    // --- HELPERS ---
     function reduzirNumero(num) {
       if (isNaN(num) || num === 0) return 1;
       let n = num;
@@ -447,18 +422,28 @@
       document.getElementById("analiseDias").innerHTML = html;
     }
 
-    // --- MÁSCARA DE DATA AUTOMÁTICA ---
+    // --- MÁSCARA AUTOMÁTICA E INTELIGENTE DE DATA ---
     function aplicarMascaraData(input) {
-      input.addEventListener('input', (e) => {
-        let v = e.target.value.replace(/\D/g, '');
+      input.addEventListener('input', function(e) {
+        let v = e.target.value.replace(/\D/g, ''); // Apenas números
         if (v.length > 8) v = v.slice(0, 8);
+        
         let out = '';
-        if (v.length > 0) out += v.slice(0, 2);
-        if (v.length >= 3) out += '/' + v.slice(2, 4);
-        if (v.length >= 5) out += '/' + v.slice(4, 8);
+        // A barra só é adicionada após o 2º e o 4º dígito
+        if (v.length > 0) {
+          out += v.slice(0, 2);
+          if (v.length >= 3) { // Se tiver 3 ou mais, adiciona a barra e o próximo número
+            out += '/' + v.slice(2, 4);
+            if (v.length >= 5) {
+              out += '/' + v.slice(4, 8);
+            }
+          }
+        }
         e.target.value = out;
       });
-      input.addEventListener('keydown', (e) => {
+
+      // Remove a barra no Backspace para não travar o usuário
+      input.addEventListener('keydown', function(e) {
         if (e.key === 'Backspace' && input.value.endsWith('/')) {
           e.preventDefault();
           input.value = input.value.slice(0, -1);
@@ -473,13 +458,13 @@
       const hoje = document.getElementById("dataHoje").value.trim();
 
       if (!nome || !nasc || !hoje) {
-        mostrarToast("⚠️ Preencha todos os campos para gerar sua sorte!", true);
+        mostrarToast("⚠️ Preencha todos os campos!", true);
         return;
       }
 
       const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
       if (!dateRegex.test(nasc) || !dateRegex.test(hoje)) {
-        mostrarToast("📅 Use o formato dd/mm/aaaa (ex: 25/12/1990)", true);
+        mostrarToast("📅 Use dd/mm/aaaa (ex: 25/12/1990)", true);
         return;
       }
 
@@ -512,20 +497,11 @@
 
           resultadoDiv.innerHTML = `
             <b>✨ SEUS NÚMEROS DA SORTE ✨</b><br>
-            <span class="astro-tag">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#ffcd94" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
-              ${planetaInfo.symbol} ${signoInfo.name} · Regido por ${signoInfo.ruler}
-            </span><br>
-            <small style="color:#8db3c2;">Cálculo cabalístico do nome: ${nomeNumCabala} · Vibração da data: ${nascNum}</small><br>
-
-            <div class="linha-jogo">${ICONS.mega} Mega-Sena (6 números):</div>
-            <span style="color: #2ecc71; font-weight: 500;">${mega.join("  •  ")}</span>
-
-            <div class="linha-jogo">${ICONS.facil} Lotofácil (15 números):</div>
-            <span style="color: #9b59b6; font-weight: 500;">${facil.join("  •  ")}</span>
-
-            <div class="linha-jogo">${ICONS.loto} Lotomania (50 números):</div>
-            <span style="color: #e67e22; font-weight: 500;">${loto.join("  •  ")}</span>
+            <span class="astro-tag">${planetaInfo.symbol} ${signoInfo.name} · Regido por ${signoInfo.ruler}</span><br>
+            <small style="color:#8db3c2;">Cálculo cabalístico: ${nomeNumCabala} · Vibração data: ${nascNum}</small><br><br>
+            🎯 <strong>Mega-Sena (6):</strong><br> <span style="color: #2ecc71; font-weight: 500;">${mega.join("  •  ")}</span><br><br>
+            🎲 <strong>Lotofácil (15):</strong><br> <span style="color: #9b59b6; font-weight: 500;">${facil.join("  •  ")}</span><br><br>
+            🎰 <strong>Lotomania (50):</strong><br> <span style="color: #e67e22; font-weight: 500;">${loto.join("  •  ")}</span>
           `;
           resultadoDiv.classList.add("fade-in");
           setTimeout(() => resultadoDiv.classList.remove("fade-in"), 600);
@@ -538,7 +514,7 @@
           }, 600);
         } catch (err) {
           console.error(err);
-          resultadoDiv.innerHTML = "<b>⚠️ Erro na geração. Verifique os dados e tente novamente.</b>";
+          resultadoDiv.innerHTML = "<b>⚠️ Erro na geração. Tente novamente.</b>";
           mostrarToast("Erro interno, recarregue a página", true);
         } finally {
           loadingDiv.style.display = "none";
@@ -558,10 +534,7 @@
     let toastTimeout = null;
     function mostrarToast(mensagem, isError = false) {
       const toast = document.getElementById("toastMsg");
-      const svg = toast.querySelector('svg');
-      toast.innerHTML = '';
-      if (svg) toast.appendChild(svg.cloneNode(true));
-      toast.appendChild(document.createTextNode(' ' + mensagem));
+      document.getElementById("toastText").textContent = mensagem;
       toast.style.borderLeftColor = isError ? "#ff8866" : "#ffaa44";
       toast.classList.add("show");
       if (toastTimeout) clearTimeout(toastTimeout);
@@ -574,14 +547,19 @@
       document.getElementById("btnGerar").addEventListener("click", (e) => { e.preventDefault(); gerarNumeros(); });
       document.getElementById("btnLimpar").addEventListener("click", (e) => { e.preventDefault(); limparCampos(); });
 
-      // Enter em qualquer campo dispara geração
       ["nome", "dataNascimento", "dataHoje"].forEach(id => {
         document.getElementById(id).addEventListener("keypress", (e) => {
           if (e.key === "Enter") { e.preventDefault(); gerarNumeros(); }
         });
       });
 
-      // Aplica máscara automática nas datas
+      // Aplica a máscara nas datas
       aplicarMascaraData(document.getElementById("dataNascimento"));
       aplicarMascaraData(document.getElementById("dataHoje"));
-   
+    }
+
+    setupEventListeners();
+  })();
+</script>
+</body>
+</html>
