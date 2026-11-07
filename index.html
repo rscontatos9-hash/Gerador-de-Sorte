@@ -301,6 +301,8 @@
 
 <script>
   (function() {
+    'use strict';
+
     // --- TABELA CABALÍSTICA ---
     const CABALA_TABLE = {
       'a':1, 'b':2, 'c':3, 'd':4, 'e':5, 'f':6, 'g':7, 'h':8, 'i':9,
@@ -334,12 +336,11 @@
       { name: "Sagitário", start: [11, 22], end: [12, 21], element: "Fogo", ruler: "Júpiter", rulerNum: 3 }
     ];
 
-    // --- ÍCONES SVG (reutilizáveis) ---
+    // --- ÍCONES SVG ---
     const ICONS = {
       mega: '<svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>',
       facil: '<svg viewBox="0 0 24 24" fill="none" stroke="#9b59b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="#9b59b6"/><circle cx="15.5" cy="8.5" r="1.5" fill="#9b59b6"/><circle cx="8.5" cy="15.5" r="1.5" fill="#9b59b6"/><circle cx="15.5" cy="15.5" r="1.5" fill="#9b59b6"/></svg>',
-      loto: '<svg viewBox="0 0 24 24" fill="none" stroke="#e67e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>',
-      check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+      loto: '<svg viewBox="0 0 24 24" fill="none" stroke="#e67e22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>'
     };
 
     // --- FUNÇÕES AUXILIARES ---
@@ -398,9 +399,10 @@
     function gerarListaSegura(qtd, max, seedBase) {
       const rng = createSeededRandom(seedBase);
       const numeros = new Set();
-      while (numeros.size < qtd) {
-        const num = Math.floor(rng() * max) + 1;
-        numeros.add(num);
+      let guard = 0;
+      while (numeros.size < qtd && guard < qtd * 100) {
+        numeros.add(Math.floor(rng() * max) + 1);
+        guard++;
       }
       return Array.from(numeros).sort((a, b) => a - b);
     }
@@ -448,7 +450,7 @@
     // --- MÁSCARA DE DATA AUTOMÁTICA ---
     function aplicarMascaraData(input) {
       input.addEventListener('input', (e) => {
-        let v = e.target.value.replace(/\D/g, ''); // só dígitos
+        let v = e.target.value.replace(/\D/g, '');
         if (v.length > 8) v = v.slice(0, 8);
         let out = '';
         if (v.length > 0) out += v.slice(0, 2);
@@ -456,7 +458,6 @@
         if (v.length >= 5) out += '/' + v.slice(4, 8);
         e.target.value = out;
       });
-      // Ao apagar, remove a barra automaticamente
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Backspace' && input.value.endsWith('/')) {
           e.preventDefault();
@@ -557,7 +558,6 @@
     let toastTimeout = null;
     function mostrarToast(mensagem, isError = false) {
       const toast = document.getElementById("toastMsg");
-      // preserva o SVG e troca só o texto
       const svg = toast.querySelector('svg');
       toast.innerHTML = '';
       if (svg) toast.appendChild(svg.cloneNode(true));
@@ -571,4 +571,17 @@
     }
 
     function setupEventListeners() {
-      document.getElementById("btnGerar").addEventListener("click", (e) => { e.preventDefault(); gerarNumeros
+      document.getElementById("btnGerar").addEventListener("click", (e) => { e.preventDefault(); gerarNumeros(); });
+      document.getElementById("btnLimpar").addEventListener("click", (e) => { e.preventDefault(); limparCampos(); });
+
+      // Enter em qualquer campo dispara geração
+      ["nome", "dataNascimento", "dataHoje"].forEach(id => {
+        document.getElementById(id).addEventListener("keypress", (e) => {
+          if (e.key === "Enter") { e.preventDefault(); gerarNumeros(); }
+        });
+      });
+
+      // Aplica máscara automática nas datas
+      aplicarMascaraData(document.getElementById("dataNascimento"));
+      aplicarMascaraData(document.getElementById("dataHoje"));
+   
